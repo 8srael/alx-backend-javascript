@@ -8,7 +8,6 @@ export default function handleProfileSignup(firstName, lastName, fileName) {
         if (result.status === 'rejected') {
           result.value = `Error: ${result.reason.message}`;
           delete result.reason;
-          console.log('ok');
         }
       }
       return results;
