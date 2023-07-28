@@ -35,6 +35,11 @@ export default class HolbertonCourse {
     if (Array.isArray(students) === false) {
       throw TypeError('Students must be an array of strings');
     }
+    for (const student of students) {
+      if (typeof student !== 'string' || Number.isNaN(Number(student)) === false) {
+        throw TypeError('Array must contain only strings');
+      }
+    }
     this._students = students;
   }
 }
