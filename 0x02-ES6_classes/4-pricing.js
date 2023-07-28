@@ -1,4 +1,4 @@
-import Currency from "./3-currency.js";
+import Currency from './3-currency.js';
 
 export default class Pricing {
   constructor(amount, currency) {
@@ -26,7 +26,7 @@ export default class Pricing {
       throw TypeError('Currency must be a Currency instance');
     }
     this._currency = currency;
-}
+  }
 
   displayFullPrice() {
     return `${this._amount} ${this._currency.displayFullCurrency()}`;
