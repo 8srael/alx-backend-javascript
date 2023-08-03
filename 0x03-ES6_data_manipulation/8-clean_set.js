@@ -1,6 +1,6 @@
 export default function cleanSet(set, startStr) {
   const arrayStr = [];
-  if (startStr.length === 0) {
+  if (!set || !startString || !(set instanceof Set) || typeof startString !== 'string') {
     return '';
   }
   for (const item of set) {
