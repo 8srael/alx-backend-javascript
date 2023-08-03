@@ -4,8 +4,11 @@ export default function cleanSet(set, startStr) {
     return '';
   }
   for (const item of set) {
-    if (item.startsWith(startStr)) {
-      arrayStr.push(item.substring(startStr.length));
+    if (typeof item === 'string' && item.startsWith(startStr)) {
+      const itemSubStr = item.substring(startStr.length);
+      if (itemSubStr && itemSubStr !== item) {
+        arrayStr.push(itemSubStr);
+      }
     }
   }
 
