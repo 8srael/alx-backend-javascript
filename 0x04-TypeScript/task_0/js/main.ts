@@ -25,8 +25,10 @@ const secondStudent: Student = {
 // Creating an array of students
 const studentsList: Array<Student> = [firstStudent, secondStudent];
 
+// Creating a table and inserting the students first name and location
 const table = document.querySelector('#students-table');
 
+//check if table is an instance of HTMLTableElement
 if (table instanceof HTMLTableElement) {
   studentsList.forEach((student) => {
     const row = table.insertRow();
