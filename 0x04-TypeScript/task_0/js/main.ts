@@ -7,20 +7,18 @@ interface Student {
 }
 
 // Creating two students
-
 const firstStudent: Student = {
   firstName: 'John',
   lastName: 'Doe',
   age: 25,
   location: 'New York'
-}
-
+};
 const secondStudent: Student = {
   firstName: 'Martin',
   lastName: 'King',
   age: 23,
   location: 'Paris'
-}
+};
 
 // Creating an array of students
 const studentsList: Array<Student> = [firstStudent, secondStudent];
