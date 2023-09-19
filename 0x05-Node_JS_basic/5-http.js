@@ -10,7 +10,7 @@ const port = 1245;
 const dbPath = process.argv.length > 2 ? process.argv[2] : '';
 
 const countStudents = (path) => new Promise((resolve, reject) => {
-  if (!dataPath) {
+  if (!path) {
     reject(new Error('Cannot load the database'));
   }
   fs.readFile(path, 'utf-8', (err, data) => {
