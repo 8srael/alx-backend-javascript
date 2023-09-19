@@ -37,7 +37,8 @@ const app = http.createServer((req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     res.end('Hello Holberton School!');
-  } else if (req.url === '/students') {
+  }
+  if (req.url === '/students') {
     countStudents(dbPath)
       .then((data) => {
         res.statusCode = 200;
@@ -52,10 +53,6 @@ Number of students in SWE: ${data[1].length}. List: ${data[1].join(', ')}`);
         res.setHeader('Content-Type', 'text/plain');
         res.end(error.message);
       });
-  } else {
-    res.statusCode = 404;
-    res.setHeader('Content-Type', 'text/plain');
-    res.end('404 - Not found');
   }
 });
 
