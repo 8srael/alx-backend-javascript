@@ -8,5 +8,5 @@ first backend specialization repository
 2. [0x02. ES6 classes](https://github.com/8srael/alx-backend-javascript/tree/master/0x02-ES6_classes)
 3. [0x03. ES6 data manipulation](https://github.com/8srael/alx-backend-javascript/tree/master/0x03-ES6_data_manipulation)
 4. [0x04. Typescript](https://github.com/8srael/alx-backend-javascript/tree/master/0x04-TypeScript)
-5. [0x05. NodeJS Basics](https://github.com/8srael/alx-backend-javascript/tree/master/0x05-NodeJS_basic)
+5. [0x05. NodeJS Basics](https://github.com/8srael/alx-backend-javascript/tree/master/0x05-Node_JS_basic)
 
