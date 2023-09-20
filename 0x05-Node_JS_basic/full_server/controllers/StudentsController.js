@@ -4,9 +4,10 @@ import readDatabase from '../utils';
  * StudentsController class for managing students
  */
 
+const dbPath = process.argv.length > 2 ? process.argv[2] : '';
+
 class StudentsController {
   static getAllStudents(request, response) {
-    const dbPath = process.argv.length > 2 ? process.argv[2] : '';
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/plain');
     if (!dbPath) {
@@ -18,14 +19,13 @@ class StudentsController {
 Number of students in ${Object.keys(data)[0]}: ${data.CS.length}. List: ${data.CS.join(', ')}
 Number of students in ${Object.keys(data)[1]}: ${data.SWE.length}. List: ${data.SWE.join(', ')}\n`);
       })
-      .catch((err) => {
+      .catch((error) => {
         response.statusCode = 500;
-        response.end(err instanceof Error ? err.message : err.toString());
+        response.end(error instanceof Error ? error.message : error.toString());
       });
   }
 
   static getAllStudentsByMajor(request, response) {
-    const dbPath = process.argv.length > 2 ? process.argv[2] : '';
     response.setHeader('Content-Type', 'text/plain');
     readDatabase(dbPath)
       .then((data) => {
