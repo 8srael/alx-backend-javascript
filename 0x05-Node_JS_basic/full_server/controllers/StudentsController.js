@@ -28,9 +28,9 @@ Number of students in ${Object.keys(data)[1]}: ${data.SWE.length}. List: ${data.
       .then((data) => {
         const { major } = request.params;
         if (Object.keys(data).includes(major)) {
-          response.send(`List: ${data[major].join(', ')}\n`);
+          response.send(`List: ${data[major].join(', ')}`);
         } else {
-          response.status(500).send('Major parameter must be CS or SWE\n');
+          response.status(500).send('Major parameter must be CS or SWE');
         }
       })
       .catch((error) => {
