@@ -10,7 +10,7 @@ const readDatabase = (dbPath) => new Promise((resolve, reject) => {
   }
   fs.readFile(dbPath, 'utf-8', (err, data) => {
     if (err) {
-      reject(new Error(err.message));
+      reject(new Error('Cannot load the database'));
     }
 
     if (data) {
