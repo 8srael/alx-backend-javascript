@@ -4,10 +4,11 @@ import readDatabase from '../utils';
  * StudentsController class for managing students
  */
 
-const dbPath = process.argv.length > 2 ? process.argv[2] : '';
 
 class StudentsController {
+
   static getAllStudents(request, response) {
+    const dbPath = process.argv.length > 2 ? process.argv[2] : '';
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/plain');
     if (!dbPath) {
@@ -21,11 +22,12 @@ Number of students in ${Object.keys(data)[1]}: ${data.SWE.length}. List: ${data.
       })
       .catch((err) => {
         response.statusCode = 500;
-        response.end(err.message + '\n');
+        response.end(err instanceof Error ? err.message : err.toString());
       });
   }
 
   static getAllStudentsByMajor(request, response) {
+    const dbPath = process.argv.length > 2 ? process.argv[2] : '';
     response.setHeader('Content-Type', 'text/plain');
     readDatabase(dbPath)
       .then((data) => {
@@ -38,7 +40,7 @@ Number of students in ${Object.keys(data)[1]}: ${data.SWE.length}. List: ${data.
       })
       .catch((err) => {
         response.statusCode = 500;
-        response.end(err.message + '\n');
+        response.end(err instanceof Error ? err.message : err.toString());
       });
   }
 }
