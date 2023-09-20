@@ -49,7 +49,7 @@ Number of students in SWE: ${data[1].length}. List: ${data[1].join(', ')}`);
     .catch((error) => {
       res.statusCode = 200;
       res.setHeader('Content-Type', 'text/plain');
-      res.end(error.message);
+      res.end(`This is the list of our students\n${error.message}`);
     });
 });
 
