@@ -10,9 +10,6 @@ const port = 1245;
 const dbPath = process.argv.length > 2 ? process.argv[2] : '';
 
 const countStudents = (path) => new Promise((resolve, reject) => {
-  if (!path) {
-    reject(new Error('Cannot load the database'));
-  }
   fs.readFile(path, 'utf-8', (err, data) => {
     if (err) {
       reject(new Error('Cannot load the database'));
@@ -52,9 +49,9 @@ Number of students in CS: ${data.css.length}. List: ${data.css.join(', ')}
 Number of students in SWE: ${data.swe.length}. List: ${data.swe.join(', ')}`);
       })
       .catch((error) => {
-        res.statusCode = 404;
+        res.statusCode = 200;
         res.setHeader('Content-Type', 'text/plain');
-        res.end(error.message);
+        res.end(`This is the list of our students\n${error instanceof Error ? error.message : error.toString()}`);
       });
   } else {
     res.statusCode = 404;
