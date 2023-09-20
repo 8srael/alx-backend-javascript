@@ -4,9 +4,7 @@ import readDatabase from '../utils';
  * StudentsController class for managing students
  */
 
-
 class StudentsController {
-
   static getAllStudents(request, response) {
     const dbPath = process.argv.length > 2 ? process.argv[2] : '';
     response.statusCode = 200;
