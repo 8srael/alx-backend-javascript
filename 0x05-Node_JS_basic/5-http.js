@@ -27,7 +27,11 @@ const countStudents = (path) => new Promise((resolve, reject) => {
         .filter((line) => line.includes('SWE'))
         .map((line) => line.substring(0, line.indexOf(',')));
 
-      resolve([csStudents, sweStudents]);
+      const studentObject = {
+        css: csStudents,
+        swe: sweStudents,
+      };
+      resolve(studentObject);
     }
   });
 });
@@ -37,22 +41,25 @@ const app = http.createServer((req, res) => {
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/plain');
     res.end('Hello Holberton School!');
-  }
-  if (req.url === '/students') {
+  } else if (req.url === '/students') {
     countStudents(dbPath)
       .then((data) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/plain');
         res.end(`This is the list of our students
-Number of students: ${data[0].length + data[1].length}
-Number of students in CS: ${data[0].length}. List: ${data[0].join(', ')}
-Number of students in SWE: ${data[1].length}. List: ${data[1].join(', ')}`);
+Number of students: ${data.css.length + data.swe.length}
+Number of students in CS: ${data.css.length}. List: ${data.css.join(', ')}
+Number of students in SWE: ${data.swe.length}. List: ${data.swe.join(', ')}`);
       })
       .catch((error) => {
         res.statusCode = 404;
         res.setHeader('Content-Type', 'text/plain');
         res.end(error.message);
       });
+  } else {
+    res.statusCode = 404;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('404 - Not found');
   }
 });
 
