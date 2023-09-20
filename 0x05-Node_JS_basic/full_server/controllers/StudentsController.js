@@ -19,9 +19,9 @@ class StudentsController {
 Number of students in ${Object.keys(data)[0]}: ${data.CS.length}. List: ${data.CS.join(', ')}
 Number of students in ${Object.keys(data)[1]}: ${data.SWE.length}. List: ${data.SWE.join(', ')}\n`);
       })
-      .catch((error) => {
+      .catch((err) => {
         response.statusCode = 500;
-        response.send(error instanceof Error ? error.message : error.toString());
+        response.end(err.message);
       });
   }
 
@@ -36,9 +36,9 @@ Number of students in ${Object.keys(data)[1]}: ${data.SWE.length}. List: ${data.
           response.status(500).send('Major parameter must be CS or SWE');
         }
       })
-      .catch((error) => {
+      .catch((err) => {
         response.statusCode = 500;
-        response.send(error instanceof Error ? error.message : error.toString());
+        response.end(err.message);
       });
   }
 }
