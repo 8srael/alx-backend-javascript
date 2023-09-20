@@ -21,7 +21,7 @@ Number of students in ${Object.keys(data)[1]}: ${data.SWE.length}. List: ${data.
       })
       .catch((err) => {
         response.statusCode = 500;
-        response.end(err.toString());
+        response.end(err.message + '\n');
       });
   }
 
@@ -38,7 +38,7 @@ Number of students in ${Object.keys(data)[1]}: ${data.SWE.length}. List: ${data.
       })
       .catch((err) => {
         response.statusCode = 500;
-        response.end(err.toString());
+        response.end(err.message + '\n');
       });
   }
 }
