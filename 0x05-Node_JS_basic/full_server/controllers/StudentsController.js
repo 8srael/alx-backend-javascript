@@ -8,15 +8,16 @@ const dbPath = process.argv.length > 2 ? process.argv[2] : '';
 
 class StudentsController {
   static getAllStudents(request, response) {
+    response.statusCode = 200;
     response.setHeader('Content-Type', 'text/plain');
     if (!dbPath) {
       response.status(500).send('Cannot load the database');
     }
     readDatabase(dbPath)
       .then((data) => {
-        response.status(200).end(`This is the list of our students
+        response.end(`This is the list of our students
 Number of students in ${Object.keys(data)[0]}: ${data.CS.length}. List: ${data.CS.join(', ')}
-Number of students in ${Object.keys(data)[1]}: ${data.SWE.length}. List: ${data.SWE.join(', ')}`);
+Number of students in ${Object.keys(data)[1]}: ${data.SWE.length}. List: ${data.SWE.join(', ')}\n`);
       })
       .catch(() => {
         response.status(500).send('Cannot load the database');
@@ -34,7 +35,7 @@ Number of students in ${Object.keys(data)[1]}: ${data.SWE.length}. List: ${data.
           response.status(500).send('Major parameter must be CS or SWE');
         }
       })
-      .catch((error) => {
+      .catch(() => {
         response.statusCode = 500;
         response.end('Cannot load the database');
       });
