@@ -47,7 +47,7 @@ Number of students in CS: ${data[0].length}. List: ${data[0].join(', ')}
 Number of students in SWE: ${data[1].length}. List: ${data[1].join(', ')}`);
     })
     .catch((error) => {
-      res.statusCode = 404;
+      res.statusCode = 200;
       res.setHeader('Content-Type', 'text/plain');
       res.end(error.message);
     });
