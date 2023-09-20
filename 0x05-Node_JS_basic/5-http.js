@@ -25,7 +25,7 @@ const countStudents = (path) => new Promise((resolve, reject) => {
         .map((line) => line.substring(0, line.indexOf(',')));
 
       const studentObject = {
-        css: csStudents,
+        cs: csStudents,
         swe: sweStudents,
       };
       resolve(studentObject);
@@ -44,8 +44,8 @@ const app = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', 'text/plain');
         res.end(`This is the list of our students
-Number of students: ${data.css.length + data.swe.length}
-Number of students in CS: ${data.css.length}. List: ${data.css.join(', ')}
+Number of students: ${data.cs.length + data.swe.length}
+Number of students in CS: ${data.cs.length}. List: ${data.cs.join(', ')}
 Number of students in SWE: ${data.swe.length}. List: ${data.swe.join(', ')}`);
       })
       .catch((error) => {
