@@ -4,10 +4,9 @@ import readDatabase from '../utils';
  * StudentsController class for managing students
  */
 
-const dbPath = process.argv.length > 2 ? process.argv[2] : '';
-
 class StudentsController {
   static getAllStudents(request, response) {
+    const dbPath = process.argv.length > 2 ? process.argv[2] : '';
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/plain');
     if (!dbPath) {
@@ -26,6 +25,7 @@ Number of students in ${Object.keys(data)[1]}: ${data.SWE.length}. List: ${data.
   }
 
   static getAllStudentsByMajor(request, response) {
+    const dbPath = process.argv.length > 2 ? process.argv[2] : '';
     response.setHeader('Content-Type', 'text/plain');
     readDatabase(dbPath)
       .then((data) => {
@@ -36,9 +36,9 @@ Number of students in ${Object.keys(data)[1]}: ${data.SWE.length}. List: ${data.
           response.status(500).send('Major parameter must be CS or SWE');
         }
       })
-      .catch((err) => {
+      .catch((error) => {
         response.statusCode = 500;
-        response.end(err instanceof Error ? err.message : err.toString());
+        response.end(error instanceof Error ? error.message : error.toString());
       });
   }
 }
