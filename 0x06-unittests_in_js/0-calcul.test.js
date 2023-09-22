@@ -1,5 +1,5 @@
 /**
- * 0-calcul.test.js
+ * Test file of 0-calcul module
  */
 
 const assert = require('assert');
