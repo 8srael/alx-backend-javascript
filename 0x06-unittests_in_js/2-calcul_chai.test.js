@@ -6,7 +6,7 @@ const { expect } = require('chai');
 const calculateNumber = require('./1-calcul');
 
 describe('calculateNumber', () => {
-  describe('Test for type=="SUM"', () => {
+  describe('type="SUM"', () => {
     it('should return 4 when adding 1 and 3 rounded after rounding both', () => {
       expect(calculateNumber('SUM', 1.0, 3.0)).to.equal(4);
     });
@@ -20,7 +20,7 @@ describe('calculateNumber', () => {
     });
   });
   
-  describe('Test for type=="SUBTRACT"', () => {
+  describe('type="SUBTRACT"', () => {
     it('should return 4 when subtracting 1 and 3', () => {
       expect(calculateNumber('SUBTRACT', 1, 3)).to.equal(-2);
     });
@@ -34,7 +34,7 @@ describe('calculateNumber', () => {
     });
   });
 
-  describe('Test for type=="DIVIDE"', () => {
+  describe('type="DIVIDE"', () => {
     it('should return 0.2 when dividing 1.4 and 4.5 after rounding both', () => {
       expect(calculateNumber('DIVIDE', 1.4, 4.5)).to.equal(0.2);
     });
