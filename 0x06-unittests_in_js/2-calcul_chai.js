@@ -1,22 +1,14 @@
-/**
- * Task 2: Basic test using Chai assertion library
- */
-
 const calculateNumber = (type, a, b) => {
-  const aRounded = Math.round(a);
-  const bRounded = Math.round(b);
-
   if (type === 'SUM') {
-    return aRounded + bRounded;
-  } if (type === 'SUBTRACT') {
-    return aRounded - bRounded;
-  } if (type === 'DIVIDE') {
-    if (bRounded === 0) {
-      return 'Error';
-    }
-    return aRounded / bRounded;
+    return Math.round(a) + Math.round(b);
   }
-  throw new TypeError('Type must be SUM, SUBTRACT or DIVIDE');
+  if (type === 'SUBTRACT') {
+    return Math.round(a) - Math.round(b);
+  }
+  if (type === 'DIVIDE') {
+    return Math.round(b) === 0 ? 'Error' : Math.round(a) / Math.round(b);
+  }
+  return 0;
 };
 
 module.exports = calculateNumber;
